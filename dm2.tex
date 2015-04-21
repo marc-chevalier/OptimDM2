@@ -12,13 +12,13 @@
 
 \subsection*{a}
 
-Soit $E$ un ensemble fini et $S=\set{S_1,\ldots,S_m}{}\subseteq \P(E)$.
+Soit $E$ un ensemble fini et $S=\set{S_1,\ldots,S_m}{}\subseteq \parties{E}$.
 
 On se donne aussi $w:S\ra \RR^+$.
 
 Pour chaque $S_i$, on introduit une variable $x_i$. On a 
 \[
-    \forall i \in \llbracket 1,m\rrbracket, 0\leqslant x_i
+    \forall i \in \entiers{1}{m}, 0\leqslant x_i
 \]
 
 On veut aussi que chaque élément soit couvert :
@@ -36,7 +36,7 @@ Le problème dual est de maximiser $\sum\limits_{e \in E} y_e$.
 
 Avec les contraintes
 \[
-    \forall i\in\llbracket 1,m\rrbracket, \sum\limits_{e\in S_i} y_e \leqslant w(S_i)
+    \forall i\in\entiers{1}{m}, \sum\limits_{e\in S_i} y_e \leqslant w(S_i)
 \]
 et
 \[
@@ -47,7 +47,7 @@ et
 
 Une solution entière du problème primal est la liste des valeurs
 \[
-    ([S_i\in c]\footnotemark)_{i\in\llbracket 1,m\rrbracket}
+    ([S_i\in c]\footnotemark)_{i\in\entiers{1}{m}}
 \]\footnotetext{\url{https://fr.wikipedia.org/wiki/Crochet_de_Iverson}}
 
 \section*{Exercice 2}
