@@ -1,0 +1,117 @@
+\input{src/macros.tex}
+
+\title{Optimisation \--- DM 2}
+\author{Marc \textsc{Chevalier}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Exercice 1}
+
+\subsection*{a}
+
+Soit $E$ un ensemble fini et $S=\set{S_1,\ldots,S_m}\subseteq \P(E)$.
+
+On se donne aussi $w:S\ra \RR^+$.
+
+Pour chaque $S_i$, on introduit une variable $x_i$. On a 
+\[
+    \forall i \in \llbracket 1,m\rrbracket, 0\leqslant x_i
+\]
+
+On veut aussi que chaque élément soit couvert :
+\[
+    \forall e\in E, \sum\limits_{S_i \ni e} x_i \geqslant 1
+\]
+
+Le but est de minimiser le cout total $\sum\limits_{i=1}^m x_i \cdot w(S_i)$.
+
+\subsection*{b}
+
+On introduit une variable $y_e$ pour chaque $e\in E$.
+
+Le problème dual est de maximiser $\sum\limits_{e \in E} y_e$.
+
+Avec les contraintes
+\[
+    \forall i\in\llbracket 1,m\rrbracket, \sum\limits_{e\in S_i} y_e \leqslant w(S_i)
+\]
+et
+\[
+    \forall e\in E, y_e \geqslant 0
+\]
+
+\subsection*{c}
+
+Une solution entière du problème primal est la liste des valeurs
+\[
+    ([S_i\in c]\footnotemark)_{i\in\llbracket 1,m\rrbracket}
+\]\footnotetext{\url{https://fr.wikipedia.org/wiki/Crochet_de_Iverson}}
+
+\section*{Exercice 2}
+
+\subsection*{a}
+
+Dans $D$, on a 
+\[
+    \begin{aligned}
+        z &= v + \sum\limits_{j\in\overline{B}} c_j x_j \\
+        &= v + c_s y + \sum\limits_{j\in\overline{B} \wedge s\neq j} c_j x_j\\
+        &= v + c_s y
+    \end{aligned}
+\]
+
+Dans $D^*$, on a 
+\[
+    \begin{aligned}
+        z &= v + \sum\limits_{j\in B} c_j^*x_j + \sum\limits_{j\in \overline{B}} c_j^*x_j \\
+        &= v + c^*_s y + \sum\limits_{i\in B} c_i^* x_i \\
+        &= v + c^*_s y + \sum\limits_{i\in B} c_i^* (b_i - a_{i,s}y)
+    \end{aligned}
+\]
+
+D'où
+\[
+    v + c_s y = v + c^*_s y + \sum\limits_{i\in B} c_i^* (b_i - a_{i,s}y)
+\]
+
+\subsection*{b}
+
+\[
+    \begin{aligned}
+        v + c_s y = v + c^*_s y + \sum\limits_{i\in B} c_i^* (b_i - a_{i,s}y) &\LRa c_s y = c^*_s y + \sum\limits_{i\in B} c_i^* (b_i - a_{i,s}y)\\
+        &\LRa \left(c_s - c^*_s + \sum\limits_{i\in B} c_i^*  a_{i,s}\right) y - \sum\limits_{i\in B} c_i^* b_i = 0\\
+        &\LRa \left(c_s - c^*_s + \sum\limits_{i\in B} c_i^*  a_{i,s}\right) y =0\\
+        &\LRa c_s - c^*_s + \sum\limits_{i\in B} c_i^*  a_{i,s} =0
+    \end{aligned}
+\]
+
+\subsection*{c}
+
+Comme $x_s$ est entrante dans $D$, on a $c_s > 0$. 
+
+\subsection*{d}
+
+Si $c^*_s > 0$, comme on a $s<t$, $x_s$ serait entrante car on choisit la variable de plus petit indice. Or, dans $D^*$, c'est $x_t$ qui est entrante, donc $c^*_s \leqslant 0$.
+
+\subsection*{e}
+
+On a 
+\[
+    c_s - c^*_s + \sum\limits_{i\in B} c_i^*  a_{i,s} =0
+\]
+soit
+\[
+    c^*_s - c_s = \sum\limits_{i\in B} c_i^*  a_{i,s}
+\]
+or $c^*_s - c_s<0$ donc $\sum\limits_{i\in B} c_i^*  a_{i,s} < 0$ donc au moins un des termes est négatif, d'où l'existence de $r\in B$ tel que $x_r^*a_{r,s} < 0$.
+
+\subsection*{f}
+
+
+
+\end{document}
+
+
