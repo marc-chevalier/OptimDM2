@@ -50,6 +50,53 @@ Une solution entière du problème primal est la liste des valeurs
     \big([S_i\in c]\footnotemark\big)_{i\in\entiers{1}{m}}
 \]\footnotetext{\url{https://fr.wikipedia.org/wiki/Crochet_de_Iverson}}
 
+Pour le dual, $y_e=1$ si $e$ est choisit ou $0$ sinon. Le but est de maximiser le nombre de points choisis tel que deux points choisis ne soient pas dans le même $S_i$.
+
+\subsection*{d}
+ 
+On pose $M=\max\set{|s|}{s\in S}$
+
+$f : x\mapsto Mx$ répond au problème. En effet si on prend l'optimum réel, en multipliant la solution par $M$, la condition sur $e$
+\[
+    \sum\limits_{s \ni e} x_s \geqslant M
+\]
+impose qu'il existe un des termes de la somme plus grand que 1 (par définition de $M$). On peut donc prendre la partie entière des $x_s$ et respecter le système d'origine, l'objectif de cette solution est alors inférieur à $M$ fois l'objectif du système réel optimal.
+
+\subsection*{e}
+
+
+Choisissons $S_0$ formés de $\log n$ éléments de $S$ piochés uniformément.
+
+\[
+    \forall x \in E, \forall s \in S, \proba{x \in s}{}=\frac{1}{2}
+\]
+
+\[
+    \begin{aligned}
+        \forall x \in E, \proba{x \in \bigcup\limits_{s\in S_0} s}{} &= \sum_{s_i in S_0}\proba{x \in s_i \text{ et } \forall t<i, x \not\in s_t }{}\\
+        &= \sum_{i=1}^{\log n}{\frac{1}{2^i}}\\
+        &= 1-\frac{1}{2^{\log n}}\\
+        &= 1-\frac{1}{n}\\
+    \end{aligned}
+\]
+
+On prend alors $\forall i, x_i=\frac{1}{n-1}\underset{+\infty}{\longrightarrow} 1$, ce qui en moyenne valide les conditions pour l'instance réelle.
+
+Ainsi $\esp{R-SC^*}\leqslant \frac{n}{n-1}$
+
+Pour l'instance entière :
+
+\[
+    \proba{E=\bigcup\limits_{s\in S_0} s}{}={\left(\frac{n-1}{n}\right)}^n \underset{+\infty}{\longrightarrow} \frac{1}{e}
+\]
+
+Ainsi avec probabilité non négligeable, $SC^* \leqslant (\log n) (R-SC*)$
+
+
+\subsection*{f}
+
+
+
 \section*{Exercice 2}
 
 \subsection*{a}
@@ -106,11 +153,64 @@ soit
 \[
     c^*_s - c_s = \sum\limits_{i\in B} c_i^*  a_{i,s}
 \]
-or $c^*_s - c_s<0$ donc $\sum\limits_{i\in B} c_i^*  a_{i,s} < 0$ donc au moins un des termes est négatif, d'où l'existence de $r\in B$ tel que $x_r^*a_{r,s} < 0$.
+or $c^*_s - c_s<0$ donc $\sum\limits_{i\in B} c_i^*  a_{i,s} < 0$ donc au moins un des termes est négatif, d'où l'existence de $r\in B$ tel que $c_r^*a_{r,s} < 0$.
 
 \subsection*{f}
 
+Supposons que $x_r$ ne soit pas active. Cela signifie qu'elle reste basique tout au long du cycle. Par conséquent, elle a un coefficient nul dans la fonction objectif de $D^*$ : $c^*_r = 0$. Ce qui contredit$c_r^*a_{r,s} < 0$. Donc $x_r$ est nécessairement active.
 
+\subsection*{g}
+\subsection*{h}
+
+De même qu'en \textbf{d}, comme $r\neq t$ $c_r^* \leqslant 0$ et donc, grâce à \textbf{e}, $a_{rs}>0$.
+
+\subsection*{i}
+\subsection*{j}
+
+\section*{Exercice 3}
+
+On introduit tout un tas de variables. Chacune est indexée par $i$ qui prend les valeurs de $\entiers{1}{4}$.
+
+Il nous faut des variables pour
+\begin{itemize}
+    \item les gains : $g_i$ (non nécessairement positive)
+    \item le nombre de fabricants : $f_i$ (positive)
+    \item le nombre de formateurs : $t_i$ (positive)
+    \item le nombre de stagiaires : $s_i$ (positive)
+    \item le nombre total d'ouvrier : $o_i$ (positive)
+\end{itemize}
+
+On note $p_i$ le prix de vente d'un téléphone à la semaine $i$.
+
+L'objectif est de maximiser $\sum\limits_{i=1}^4 g_i$.
+
+Avec certaines contraintes :
+\begin{itemize}
+    \item Les stagiaires deviennent des ouvriers
+        \[
+            o_{i+1} =  o_i + s_i
+        \]
+    \item Le nombre total de fabriquant et de formateur est inférieur au nombre total d'ouvriers
+        \[
+            f_i+p_i \leqslant o_i
+        \]
+    \item Chaque formateur forme 3 stagiaires
+        \[
+            s_i=3\cdot t_i        
+        \]
+    \item Le gain est le revenu auquel on soustrait les salaires.
+        \[
+            g_i = 50\cdot p_i \cdot f_i-200\cdot o_i-100\cdot s_i
+        \]
+    \item Il faut produire au moins 20000 téléphones
+        \[
+            50(b_1+b_2+b_3+b_4) = 20000
+        \]
+    \item De façon à initialiser
+        \[
+            o_1 = 40
+        \]
+\end{itemize}
 
 \end{document}
 

@@ -70,11 +70,13 @@
 %Ensembles usuels
 \renewcommand{\AA}{\mathbb{A}}
 \newcommand{\CC}{\mathbb{C}}
+\newcommand{\EE}{\mathbb{E}}
 \newcommand{\HH}{\mathbb{H}}
 \newcommand{\KK}{\mathbb{K}}
 \newcommand{\MM}{\mathbb{M}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\OO}{\mathbb{O}}
+\newcommand{\PP}{\mathbb{P}}
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\TT}{\mathbb{T}}
@@ -146,13 +148,22 @@
 
 
 %Du Chevalier
+\newcommand{\proba}[2]
+{
+    \ifthenelse{\equal{#2}{}}
+    {
+        \PP\left( #1 \right)
+    }{
+        \PP\left( #1 \:\middle\vert\: #2 \right)
+    }
+}
 \newcommand{\set}[2]
 {
     \ifthenelse{\equal{#2}{}}
     {
         \left\lbrace #1 \right\rbrace
     }{
-        \left\lbrace #1 \:\left\vert\: #2 \vphantom{#1} \right.\right\rbrace
+        \left\lbrace #1 \:\middle\vert\: #2 \right\rbrace
     }
 }
 \newcommand{\unionDisjointe}{\sqcup}
@@ -273,6 +284,6 @@
 \newcommand{\dd}{\mathrm{d}}
 \newcommand{\grandO}[1]{\mathcal{O}\left(#1\right)}
 \newcommand{\opname}[1]{\operatorname{#1}}
-\newcommand{\Var}[1]{\text{Var}\left( #1 \right)}
+\newcommand{\Var}[1]{\operatorname{Var}\left( #1 \right)}
 \newcommand{\prob}[1]{\PP\left( #1 \right)}
 \newcommand{\esp}[1]{\EE\left[ #1 \right]}
