@@ -1,6 +1,6 @@
 \input{src/macros.tex}
 
-\title{Optimisation \--- DM 2}
+\title{Optimisation \---- DM 2}
 \author{Marc \textsc{Chevalier}}
 \date{}
 
@@ -182,9 +182,9 @@ Il nous faut des variables pour
     \item le nombre total d'ouvrier : $o_i$ (positive)
 \end{itemize}
 
-On note $p_i$ le prix de vente d'un téléphone à la semaine $i$.
+On note $p_i$ le prix de vente d'un téléphone à la semaine $i$ moins le coût de fabrication.
 
-On a $p_1 = 20$, $p_2 = 18$, $p_3 = 16$ et $p_4 = 14$.
+On a $p_1 = 15$, $p_2 = 13$, $p_3 = 11$ et $p_4 = 9$.
 
 L'objectif est de maximiser $\sum\limits_{i=1}^4 g_i$.
 
@@ -196,7 +196,7 @@ Avec certaines contraintes :
         \]
     \item Le nombre total de fabriquant et de formateur est inférieur au nombre total d'ouvriers
         \[
-            f_i+p_i \leqslant o_i
+            f_i+t_i \leqslant o_i
         \]
     \item Chaque formateur forme 3 stagiaires
         \[
@@ -206,7 +206,7 @@ Avec certaines contraintes :
         \[
             g_i = 50\cdot p_i \cdot f_i-200\cdot o_i-100\cdot s_i
         \]
-    \item Il faut produire au moins 20000 téléphones
+    \item Il faut produire 20000 téléphones pour satisfaire le client mais un surplus ne sera pas racheté
         \[
             50(b_1+b_2+b_3+b_4) = 20000
         \]
