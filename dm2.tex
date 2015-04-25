@@ -75,14 +75,14 @@ Choisissons $S_0$ formés de $\log n$ éléments de $S$ piochés uniformément.
 
 \[
     \begin{aligned}
-        \forall x \in E, \proba{x \in \bigcup\limits_{s\in S_0} s}{} &= \sum_{s_i in S_0}\proba{x \in s_i \text{ et } \forall t<i, x \not\in s_t }{}\\
+        \forall x \in E, \proba{x \in \bigcup\limits_{s\in S_0} s}{} &= \sum_{s_i \in S_0}\proba{x \in s_i \text{ et } \forall t<i, x \not\in s_t }{}\\
         &= \sum_{i=1}^{\log n}{\frac{1}{2^i}}\\
         &= 1-\frac{1}{2^{\log n}}\\
         &= 1-\frac{1}{n}\\
     \end{aligned}
 \]
 
-On prend alors $\forall i, x_i=\frac{1}{n-1}\underset{+\infty}{\longrightarrow} 1$, ce qui en moyenne valide les conditions pour l'instance réelle.
+On prend alors $\forall n, x_n=\frac{n-1}{n}\underset{+\infty}{\longrightarrow} 1$, ce qui en moyenne valide les conditions pour l'instance réelle.
 
 Ainsi $\esp{R-SC^*}\leqslant \frac{n}{n-1}$
 
